@@ -477,6 +477,10 @@
     var url = el.getAttribute('data-video');
     lbTitle.textContent = (el.getAttribute('data-soon') || 'Video').toUpperCase();
     lbScreen.classList.toggle('portrait', el.classList.contains('short'));
+    var hasVideo = !!url;
+    lbScreen.querySelector('.play-btn').style.display = hasVideo ? 'none' : '';
+    lbScreen.querySelector('.soon-chip').style.display = hasVideo ? 'none' : '';
+    lbScreen.querySelector('.lb-note').style.display = hasVideo ? 'none' : '';
     if(url){
       var frame = document.createElement('iframe');
       frame.src = url;
