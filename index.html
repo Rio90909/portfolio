@@ -5,6 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IMAN ARIF — Video Editor</title>
 <meta name="description" content="Iman Arif — video editor for YouTube and short-form content. Storytelling, cinematic visuals, color grading and captions. 800K+ views generated.">
+<meta name="theme-color" content="#06060b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2322d3ee'/%3E%3Cstop offset='.5' stop-color='%23818cf8'/%3E%3Cstop offset='1' stop-color='%23e879f9'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='%2306060b'/%3E%3Cpath d='M32 9 53 26 32 55 11 26Z' fill='none' stroke='url(%23g)' stroke-width='3'/%3E%3Cpath d='M11 26h42M32 9 23.5 26 32 55l8.5-29Z' fill='none' stroke='url(%23g)' stroke-width='1.6' opacity='.65'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rio90909.github.io/portfolio/">
+<meta property="og:title" content="IMAN ARIF — Video Editor">
+<meta property="og:description" content="Short-form and YouTube edits that people actually finish — storytelling, cinematic visuals, color grading and captions for UGC and Instagram creators. 800K+ views generated.">
+<meta property="og:image" content="https://rio90909.github.io/portfolio/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="IMAN ARIF — Video Editor">
+<meta name="twitter:description" content="Short-form and YouTube edits that people actually finish. 800K+ views generated.">
+<meta name="twitter:image" content="https://rio90909.github.io/portfolio/og-image.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -155,6 +166,13 @@
   .scard .ic svg{width:100%;height:100%;display:block}
   .scard h3{font-size:17px;margin-bottom:7px;letter-spacing:.03em}
   .scard p{color:var(--muted);font-size:14px;line-height:1.6}
+  .rcard{background:var(--panel);border:1px solid var(--panel-border);border-radius:18px;padding:24px}
+  .rcard.slot{border-style:dashed}
+  .rcard .stars{color:#f5c451;font-size:15px;letter-spacing:4px;margin-bottom:13px}
+  .rcard.slot .stars{opacity:.4}
+  .rcard blockquote{font-size:15.5px;line-height:1.65;color:#d9dbf2}
+  .rcard.slot blockquote{color:var(--muted)}
+  .rcard .who{margin-top:14px;font-size:12px;letter-spacing:.18em;color:var(--dim)}
 
   .about-box{background:var(--panel);border:1px solid var(--panel-border);border-radius:24px;padding:34px 30px;display:flex;gap:28px;align-items:flex-start}
   @media(max-width:640px){.about-box{flex-direction:column;padding:26px 22px}}
@@ -178,7 +196,7 @@
   footer .fbrand{font-family:'Space Grotesk';letter-spacing:.3em;color:var(--text);margin-bottom:7px}
 
   /* reveal on scroll */
-  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
   .reveal.in{opacity:1;transform:none}
 
   /* ---------- premium extras ---------- */
@@ -334,6 +352,28 @@
           <div class="vtitle">SHORT — 03</div>
           <div class="vmeta">Soon</div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <div class="sec-head reveal"><h2>Client Reviews</h2><div class="rule"></div></div>
+    <p class="sec-sub reveal">Real words from real clients — new reviews drop into these slots as they arrive.</p>
+    <div class="grid grid-3">
+      <div class="rcard slot reveal">
+        <div class="stars">★★★★★</div>
+        <blockquote>A real client's words will live here — what they hired for, and what they got.</blockquote>
+        <div class="who">CLIENT REVIEW — COMING SOON</div>
+      </div>
+      <div class="rcard slot reveal">
+        <div class="stars">★★★★★</div>
+        <blockquote>A real client's words will live here — what they hired for, and what they got.</blockquote>
+        <div class="who">CLIENT REVIEW — COMING SOON</div>
+      </div>
+      <div class="rcard slot reveal">
+        <div class="stars">★★★★★</div>
+        <blockquote>A real client's words will live here — what they hired for, and what they got.</blockquote>
+        <div class="who">CLIENT REVIEW — COMING SOON</div>
       </div>
     </div>
   </section>
