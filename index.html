@@ -225,6 +225,8 @@
   .lb-close{position:absolute;top:12px;right:12px;width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.25);
     background:rgba(10,10,18,.6);color:#fff;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;line-height:1}
   .lb-close:hover{background:rgba(255,255,255,.14)}
+  .lb-screen.portrait{width:min(100%,52vh)}
+  @media (max-width:560px){.lightbox{padding:12px}.lb-card{padding:10px;border-radius:18px}}
 
   @media (prefers-reduced-motion: reduce){
     *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
