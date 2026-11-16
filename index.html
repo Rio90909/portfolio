@@ -232,6 +232,17 @@
     *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
     html{scroll-behavior:auto}
   }
+
+  /* client round: real previews + moving reels row */
+  .thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .reel-frame .play-btn,.reel-frame .reel-label{position:relative;z-index:1}
+  .reels-viewport{overflow:hidden;margin:0 -26px;padding:6px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+  .reels-track{display:flex;gap:16px;width:max-content;max-width:none;padding-right:16px;animation:reelsMove 42s linear infinite}
+  .reels-track .vcard.short{flex:0 0 auto;width:208px}
+  @keyframes reelsMove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .reels-viewport:hover .reels-track,.reels-viewport.paused .reels-track,.reels-viewport.reels-off .reels-track,body.lb-open .reels-track{animation-play-state:paused}
+  @media (max-width:560px){.reels-track .vcard.short{width:168px}.reels-track{animation-duration:34s}}
+  @media (prefers-reduced-motion:reduce){.reels-track{animation:none}}
 </style>
 </head>
 <body>
@@ -280,6 +291,7 @@
       </svg>
       <div class="sheen"></div>
       <div class="reel-frame" data-soon="Featured edit" data-video="https://drive.google.com/file/d/18nVy80YC9QuX3QgPjy7fSoz6PovIVicH/preview" role="button" tabindex="0" aria-label="Play featured edit">
+        <img class="thumb" src="https://drive.google.com/thumbnail?id=18nVy80YC9QuX3QgPjy7fSoz6PovIVicH&sz=w640" alt="" loading="lazy" onerror="this.remove()">
         <div class="play-btn"><svg width="17" height="17" viewBox="0 0 24 24" fill="#fff"><path d="M6 3.8v16.4c0 .9 1 1.5 1.8 1L21 13a1.2 1.2 0 0 0 0-2L7.8 2.9C7 2.4 6 2.9 6 3.8z"/></svg></div>
         <div class="reel-label">Featured Edit</div>
         <div class="soon-chip">Tap to play</div>
@@ -310,57 +322,65 @@
     <p class="sec-sub reveal">Short-form edits for creators and brands — tap any video to watch it right here.</p>
 
     <div class="group-label reveal">Shorts &amp; Reels</div>
-    <div class="grid-shorts">
-      <div class="vcard short reveal" data-soon="French Bank $133M Theft" data-video="https://drive.google.com/file/d/1phRFi0HZssTOL4wk5Yyx6l6Yh4ASXiHi/preview" role="button" tabindex="0">
+    <div class="reels-viewport" id="reelsViewport">
+    <div class="grid-shorts reels-track" id="reelsTrack">
+      <div class="vcard short" data-soon="French Bank $133M Theft" data-video="https://drive.google.com/file/d/1phRFi0HZssTOL4wk5Yyx6l6Yh4ASXiHi/preview" role="button" tabindex="0">
         <div class="poster p1"></div>
+        <img class="thumb" src="https://drive.google.com/thumbnail?id=1phRFi0HZssTOL4wk5Yyx6l6Yh4ASXiHi&sz=w640" alt="" loading="lazy" onerror="this.remove()">
         <div class="inner">
           <div class="play-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M6 3.8v16.4c0 .9 1 1.5 1.8 1L21 13a1.2 1.2 0 0 0 0-2L7.8 2.9C7 2.4 6 2.9 6 3.8z"/></svg></div>
           <div class="vtitle">FRENCH BANK $133M THEFT</div>
           <div class="vmeta">1:05</div>
         </div>
       </div>
-      <div class="vcard short reveal" data-soon="Rapper Beef" data-video="https://drive.google.com/file/d/1t4lSbVg7zmEeR183n-tfgcOjVytdH2ak/preview" role="button" tabindex="0">
+      <div class="vcard short" data-soon="Rapper Beef" data-video="https://drive.google.com/file/d/1t4lSbVg7zmEeR183n-tfgcOjVytdH2ak/preview" role="button" tabindex="0">
         <div class="poster p2"></div>
+        <img class="thumb" src="https://drive.google.com/thumbnail?id=1t4lSbVg7zmEeR183n-tfgcOjVytdH2ak&sz=w640" alt="" loading="lazy" onerror="this.remove()">
         <div class="inner">
           <div class="play-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M6 3.8v16.4c0 .9 1 1.5 1.8 1L21 13a1.2 1.2 0 0 0 0-2L7.8 2.9C7 2.4 6 2.9 6 3.8z"/></svg></div>
           <div class="vtitle">RAPPER BEEF</div>
           <div class="vmeta">0:24</div>
         </div>
       </div>
-      <div class="vcard short reveal" data-soon="What If USA & China Go to War" data-video="https://drive.google.com/file/d/1tAbrb_Sc6kF6gEwV4AqhhgODUgkeqcxU/preview" role="button" tabindex="0">
+      <div class="vcard short" data-soon="What If USA & China Go to War" data-video="https://drive.google.com/file/d/1tAbrb_Sc6kF6gEwV4AqhhgODUgkeqcxU/preview" role="button" tabindex="0">
         <div class="poster p3"></div>
+        <img class="thumb" src="https://drive.google.com/thumbnail?id=1tAbrb_Sc6kF6gEwV4AqhhgODUgkeqcxU&sz=w640" alt="" loading="lazy" onerror="this.remove()">
         <div class="inner">
           <div class="play-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M6 3.8v16.4c0 .9 1 1.5 1.8 1L21 13a1.2 1.2 0 0 0 0-2L7.8 2.9C7 2.4 6 2.9 6 3.8z"/></svg></div>
           <div class="vtitle">WHAT IF USA & CHINA GO TO WAR</div>
           <div class="vmeta">0:48</div>
         </div>
       </div>
-      <div class="vcard short reveal" data-soon="Reel 1" data-video="https://drive.google.com/file/d/10XuxMQ6c8aeibaHeE2g-7SaBonR0i7kp/preview" role="button" tabindex="0">
+      <div class="vcard short" data-soon="Reel 1" data-video="https://drive.google.com/file/d/10XuxMQ6c8aeibaHeE2g-7SaBonR0i7kp/preview" role="button" tabindex="0">
         <div class="poster p4"></div>
+        <img class="thumb" src="https://drive.google.com/thumbnail?id=10XuxMQ6c8aeibaHeE2g-7SaBonR0i7kp&sz=w640" alt="" loading="lazy" onerror="this.remove()">
         <div class="inner">
           <div class="play-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M6 3.8v16.4c0 .9 1 1.5 1.8 1L21 13a1.2 1.2 0 0 0 0-2L7.8 2.9C7 2.4 6 2.9 6 3.8z"/></svg></div>
           <div class="vtitle">REEL 1</div>
           <div class="vmeta">0:14</div>
         </div>
       </div>
-      <div class="vcard short reveal" data-soon="Video 1" data-video="https://drive.google.com/file/d/18T2B_mRlJr-IN-VUUxvvvHTxQbyKk2Rk/preview" role="button" tabindex="0">
+      <div class="vcard short" data-soon="Video 1" data-video="https://drive.google.com/file/d/18T2B_mRlJr-IN-VUUxvvvHTxQbyKk2Rk/preview" role="button" tabindex="0">
         <div class="poster p5"></div>
+        <img class="thumb" src="https://drive.google.com/thumbnail?id=18T2B_mRlJr-IN-VUUxvvvHTxQbyKk2Rk&sz=w640" alt="" loading="lazy" onerror="this.remove()">
         <div class="inner">
           <div class="play-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M6 3.8v16.4c0 .9 1 1.5 1.8 1L21 13a1.2 1.2 0 0 0 0-2L7.8 2.9C7 2.4 6 2.9 6 3.8z"/></svg></div>
           <div class="vtitle">VIDEO 1</div>
           <div class="vmeta">0:35</div>
         </div>
       </div>
-      <div class="vcard short reveal" data-soon="2nd Video" data-video="https://drive.google.com/file/d/1YKiDwc0_fUy0dxSJ0trnFMYpCgcZzVZL/preview" role="button" tabindex="0">
+      <div class="vcard short" data-soon="2nd Video" data-video="https://drive.google.com/file/d/1YKiDwc0_fUy0dxSJ0trnFMYpCgcZzVZL/preview" role="button" tabindex="0">
         <div class="poster p6"></div>
+        <img class="thumb" src="https://drive.google.com/thumbnail?id=1YKiDwc0_fUy0dxSJ0trnFMYpCgcZzVZL&sz=w640" alt="" loading="lazy" onerror="this.remove()">
         <div class="inner">
           <div class="play-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M6 3.8v16.4c0 .9 1 1.5 1.8 1L21 13a1.2 1.2 0 0 0 0-2L7.8 2.9C7 2.4 6 2.9 6 3.8z"/></svg></div>
           <div class="vtitle">2ND VIDEO</div>
           <div class="vmeta">0:20</div>
         </div>
       </div>
-      <div class="vcard short reveal" data-soon="Reel 33" data-video="https://drive.google.com/file/d/1YOP9S3pPn4RBOYx1gHmtEKVr8vt_2CfQ/preview" role="button" tabindex="0">
+      <div class="vcard short" data-soon="Reel 33" data-video="https://drive.google.com/file/d/1YOP9S3pPn4RBOYx1gHmtEKVr8vt_2CfQ/preview" role="button" tabindex="0">
         <div class="poster p1"></div>
+        <img class="thumb" src="https://drive.google.com/thumbnail?id=1YOP9S3pPn4RBOYx1gHmtEKVr8vt_2CfQ&sz=w640" alt="" loading="lazy" onerror="this.remove()">
         <div class="inner">
           <div class="play-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M6 3.8v16.4c0 .9 1 1.5 1.8 1L21 13a1.2 1.2 0 0 0 0-2L7.8 2.9C7 2.4 6 2.9 6 3.8z"/></svg></div>
           <div class="vtitle">REEL 33</div>
@@ -368,16 +388,17 @@
         </div>
       </div>
     </div>
+    </div>
   </section>
 
   <section id="reviews">
     <div class="sec-head reveal"><h2>Client Reviews</h2><div class="rule"></div></div>
     <p class="sec-sub reveal">Real words from real clients — new reviews drop into these slots as they arrive.</p>
     <div class="grid grid-3">
-      <div class="rcard slot reveal">
+      <div class="rcard reveal">
         <div class="stars">★★★★★</div>
-        <blockquote>A real client's words will live here — what they hired for, and what they got.</blockquote>
-        <div class="who">CLIENT REVIEW — COMING SOON</div>
+        <blockquote>"You did a great job, brother. Looking at your editing skills and your understanding of things — your work is quite professional."</blockquote>
+        <div class="who">HAPPY CLIENT — VIDEO PROJECT</div>
       </div>
       <div class="rcard slot reveal">
         <div class="stars">★★★★★</div>
@@ -531,6 +552,14 @@
     }, {threshold: 0.02}).observe(heroZone);
   }
 })();
+
+  var reelsTrack=document.getElementById('reelsTrack'),reelsVp=document.getElementById('reelsViewport');
+  if(reelsTrack&&reelsVp){
+    Array.prototype.slice.call(reelsTrack.children).forEach(function(c){var cl=c.cloneNode(true);cl.setAttribute('aria-hidden','true');cl.tabIndex=-1;reelsTrack.appendChild(cl);});
+    reelsVp.addEventListener('pointerdown',function(){reelsVp.classList.add('paused')});
+    window.addEventListener('pointerup',function(){reelsVp.classList.remove('paused')});
+    if('IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(e){reelsVp.classList.toggle('reels-off',!e.isIntersecting)})}).observe(document.getElementById('work'));}
+  }
 </script>
 </body>
 </html>
