@@ -253,6 +253,8 @@
   body.lb-cinema .lb-card{width:100%;height:100%;max-width:none;border-radius:0;border:none;padding:0;background:#000}
   body.lb-cinema .lb-screen{width:100%;height:100%;aspect-ratio:auto;border-radius:0}
   body.lb-cinema .lb-head{position:absolute;top:0;left:0;right:0;z-index:3;padding:16px 18px;background:linear-gradient(180deg,rgba(0,0,0,.6),transparent)}
+
+  .vcard.wide{aspect-ratio:16/9;max-width:860px;margin:0 auto}
 </style>
 </head>
 <body>
@@ -300,12 +302,7 @@
         <polygon points="50,252 150,178 150,384" fill="url(#fA)" stroke="rgba(255,255,255,.35)" stroke-width="1.2"/>
       </svg>
       <div class="sheen"></div>
-      <div class="reel-frame" data-soon="Featured edit" data-video="https://drive.google.com/file/d/18nVy80YC9QuX3QgPjy7fSoz6PovIVicH/preview" role="button" tabindex="0" aria-label="Play featured edit">
-        <img class="thumb" src="https://drive.google.com/thumbnail?id=18nVy80YC9QuX3QgPjy7fSoz6PovIVicH&sz=w640" alt="" loading="lazy" onerror="this.remove()">
-        <div class="play-btn"><svg width="17" height="17" viewBox="0 0 24 24" fill="#fff"><path d="M6 3.8v16.4c0 .9 1 1.5 1.8 1L21 13a1.2 1.2 0 0 0 0-2L7.8 2.9C7 2.4 6 2.9 6 3.8z"/></svg></div>
-        <div class="reel-label">Featured Edit</div>
-        <div class="soon-chip">Tap to play</div>
-      </div>
+
     </div>
   </div>
 
@@ -330,6 +327,17 @@
   <section id="work">
     <div class="sec-head reveal"><h2>Selected Work</h2><div class="rule"></div></div>
     <p class="sec-sub reveal">Short-form edits for creators and brands — tap any video to watch it right here.</p>
+
+    <div class="group-label reveal">Featured Edit</div>
+    <div class="vcard wide featured-card reveal" data-soon="Featured edit" data-video="https://drive.google.com/file/d/18nVy80YC9QuX3QgPjy7fSoz6PovIVicH/preview" role="button" tabindex="0">
+      <div class="poster p2"></div>
+      <img class="thumb" src="https://drive.google.com/thumbnail?id=18nVy80YC9QuX3QgPjy7fSoz6PovIVicH&sz=w640" alt="" loading="lazy" onerror="this.remove()">
+      <div class="inner">
+        <div class="play-btn"><svg width="17" height="17" viewBox="0 0 24 24" fill="#fff"><path d="M6 3.8v16.4c0 .9 1 1.5 1.8 1L21 13a1.2 1.2 0 0 0 0-2L7.8 2.9C7 2.4 6 2.9 6 3.8z"/></svg></div>
+        <div class="vtitle">THE LIE OF LAZINESS</div>
+        <div class="vmeta">8:16</div>
+      </div>
+    </div>
 
     <div class="group-label reveal">Shorts &amp; Reels</div>
     <div class="reels-viewport" id="reelsViewport">
@@ -403,22 +411,22 @@
 
   <section id="reviews">
     <div class="sec-head reveal"><h2>Client Reviews</h2><div class="rule"></div></div>
-    <p class="sec-sub reveal">Real words from real clients — new reviews drop into these slots as they arrive.</p>
+    <p class="sec-sub reveal">Words from the people who trusted him with their footage.</p>
     <div class="grid grid-3">
       <div class="rcard reveal">
         <div class="stars">★★★★★</div>
         <blockquote>"You did a great job, brother. Looking at your editing skills and your understanding of things — your work is quite professional."</blockquote>
         <div class="who">HAPPY CLIENT — VIDEO PROJECT</div>
       </div>
-      <div class="rcard slot reveal">
+      <div class="rcard reveal">
         <div class="stars">★★★★★</div>
-        <blockquote>A real client's words will live here — what they hired for, and what they got.</blockquote>
-        <div class="who">CLIENT REVIEW — COMING SOON</div>
+        <blockquote>"Working with Iman was a great experience. He understood the requirements perfectly, delivered high-quality edits, and maintained excellent communication throughout the project. Highly recommended!"</blockquote>
+        <div class="who">HAPPY CLIENT</div>
       </div>
-      <div class="rcard slot reveal">
+      <div class="rcard reveal">
         <div class="stars">★★★★★</div>
-        <blockquote>A real client's words will live here — what they hired for, and what they got.</blockquote>
-        <div class="who">CLIENT REVIEW — COMING SOON</div>
+        <blockquote>"Iman is a skilled and reliable video editor. His attention to detail, creativity, and ability to turn raw footage into engaging content really impressed me. Looking forward to working with him again!"</blockquote>
+        <div class="who">HAPPY CLIENT</div>
       </div>
     </div>
   </section>
@@ -538,7 +546,7 @@
     document.body.style.overflow = 'hidden';
     document.body.classList.add('lb-open');
     // Cinema mode: the Featured Edit fills the whole phone screen, like a real video app
-    var cinema = el.classList.contains('reel-frame') && window.matchMedia('(pointer:coarse)').matches;
+    var cinema = el.classList.contains('featured-card') && window.matchMedia('(pointer:coarse)').matches;
     document.body.classList.toggle('lb-cinema', cinema);
     if(cinema && lightbox.requestFullscreen){
       lightbox.requestFullscreen().then(function(){
