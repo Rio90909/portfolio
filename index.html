@@ -243,6 +243,11 @@
   .reels-viewport:hover .reels-track,.reels-viewport.paused .reels-track,.reels-viewport.reels-off .reels-track,body.lb-open .reels-track{animation-play-state:paused}
   @media (max-width:560px){.reels-track .vcard.short{width:168px}.reels-track{animation-duration:34s}}
   @media (prefers-reduced-motion:reduce){.reels-track{animation:none}}
+  /* hero featured-edit: whole picture visible (never cropped), set into the crystal like a screen */
+  .reel-frame{background:rgba(7,7,15,.6)}
+  .reel-frame .thumb{object-fit:contain}
+  .reel-frame .play-btn{background:rgba(8,8,16,.66);box-shadow:0 8px 26px rgba(0,0,0,.5);z-index:2}
+  .reel-frame .reel-label{position:absolute;left:50%;bottom:8px;transform:translateX(-50%);background:rgba(5,5,12,.8);padding:4px 12px;border-radius:99px;white-space:nowrap;z-index:2}
 </style>
 </head>
 <body>
