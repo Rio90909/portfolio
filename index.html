@@ -248,6 +248,11 @@
   .reel-frame .thumb{object-fit:contain}
   .reel-frame .play-btn{background:rgba(8,8,16,.66);box-shadow:0 8px 26px rgba(0,0,0,.5);z-index:2}
   .reel-frame .reel-label{position:absolute;left:50%;bottom:8px;transform:translateX(-50%);background:rgba(5,5,12,.8);padding:4px 12px;border-radius:99px;white-space:nowrap;z-index:2}
+  /* cinema mode: featured edit fills the whole phone screen, like a real video app */
+  body.lb-cinema .lightbox{padding:0}
+  body.lb-cinema .lb-card{width:100%;height:100%;max-width:none;border-radius:0;border:none;padding:0;background:#000}
+  body.lb-cinema .lb-screen{width:100%;height:100%;aspect-ratio:auto;border-radius:0}
+  body.lb-cinema .lb-head{position:absolute;top:0;left:0;right:0;z-index:3;padding:16px 18px;background:linear-gradient(180deg,rgba(0,0,0,.6),transparent)}
 </style>
 </head>
 <body>
@@ -531,11 +536,23 @@
     lightbox.classList.add('open');
     lightbox.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+    document.body.classList.add('lb-open');
+    // Cinema mode: the Featured Edit fills the whole phone screen, like a real video app
+    var cinema = el.classList.contains('reel-frame') && window.matchMedia('(pointer:coarse)').matches;
+    document.body.classList.toggle('lb-cinema', cinema);
+    if(cinema && lightbox.requestFullscreen){
+      lightbox.requestFullscreen().then(function(){
+        if(screen.orientation && screen.orientation.lock){ screen.orientation.lock('landscape').catch(function(){}); }
+      }).catch(function(){});
+    }
   }
   function closeSlot(){
     lightbox.classList.remove('open');
     lightbox.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+    document.body.classList.remove('lb-open');
+    document.body.classList.remove('lb-cinema');
+    if(document.fullscreenElement && document.exitFullscreen){ document.exitFullscreen().catch(function(){}); }
     var f = lbScreen.querySelector('iframe');
     if(f) f.remove();
   }
@@ -548,6 +565,9 @@
   lbClose.addEventListener('click', closeSlot);
   lightbox.addEventListener('click', function(ev){ if(ev.target === lightbox) closeSlot(); });
   document.addEventListener('keydown', function(ev){ if(ev.key === 'Escape') closeSlot(); });
+  document.addEventListener('fullscreenchange', function(){
+    if(!document.fullscreenElement){ document.body.classList.remove('lb-cinema'); }
+  });
 
   // Pause the hero animations while it is off-screen — frees the GPU for scrolling
   var heroZone = document.querySelector('.crystal-zone');
